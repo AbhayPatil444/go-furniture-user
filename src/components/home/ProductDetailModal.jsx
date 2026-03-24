@@ -113,7 +113,7 @@ const ProductDetailsModal = ({ productId, show, onHide }) => {
                 >
                   {isOutOfStock ? "Out of Stock" : "Add to Cart"}
                 </Button>
-                <Button variant="outline-secondary" className="py-2 px-3" onClick={onHide}>
+                <Button variant="outline-danger" className="py-1 px-2" onClick={onHide}>
                   Close
                 </Button>
               </div>

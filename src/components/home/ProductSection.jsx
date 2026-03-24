@@ -33,7 +33,7 @@ const ProductSection = ({title, category, BASE_URL}) => {
     return (<>
         <Container className="my-5">
             <div className="d-flex justify-content-between align-items-center mb-3">
-                <h3 className="fw-bold">{title}</h3>
+                <h3 className="product-section-title mb-0">{title}</h3>
                 <Button 
                     variant="link" 
                     onClick={() => navigate(`/category/${category}`)} 
