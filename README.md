@@ -7,13 +7,25 @@ A full-featured e-commerce web application for furniture shopping built with Rea
 ---
 
 ## 📸 Screenshots
-
+**Slider section homepage:**
 ![slider section](src/assets/image.png)
+
+**Homepage category**
 ![homepage](src/assets/image-1.png)
+
+**Product detail**
 ![product detail](src/assets/image-2.png)
+
+**My Cart**
 ![my cart](src/assets/image-3.png)
+
+**My Orders**
 ![my orders](src/assets/image-4.png)
+
+**Checkout page**
 ![checkout page](src/assets/image-5.png)
+
+**My profile account**
 ![my profile account](src/assets/image-6.png)
 
 ---
