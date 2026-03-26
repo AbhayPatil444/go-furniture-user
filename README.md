@@ -8,7 +8,6 @@ A full-featured e-commerce web application for furniture shopping built with Rea
 
 ## 📸 Screenshots
 
-> 
 ![slider section](src/assets/image.png)
 ![homepage](src/assets/image-1.png)
 ![product detail](src/assets/image-2.png)
