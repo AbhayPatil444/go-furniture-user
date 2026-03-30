@@ -18,12 +18,12 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <App />
         <ToastContainer
-          position="top-right"
-          autoClose={2500}
+          position="top-center"
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop
           closeOnClick
-          pauseOnHover={true}
+          pauseOnHover={false}
           draggable
           theme="light"
           transition={Bounce}
