@@ -2,7 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../../reduxStore/authSlice";
 import { clearCart } from "../../reduxStore/cartSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AuthModal from "../../pages/auth/authModal";
 
 const categories = [
   { label: "Chairs", path: "/category/chairs" },
@@ -16,6 +17,7 @@ const MobileSidebar = ({ show, onHide }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const [showAuth, setShowAuth] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = show ? "hidden" : "";
@@ -26,7 +28,7 @@ const MobileSidebar = ({ show, onHide }) => {
     dispatch(logout());
     dispatch(clearCart());
     onHide();
-    navigate("/login");
+    navigate("/");
   };
 
   const handleNav = (path) => {
@@ -34,8 +36,15 @@ const MobileSidebar = ({ show, onHide }) => {
     onHide();
   };
 
+  const handleOpenAuth = () => {
+    onHide();
+    setShowAuth(true);
+  };
+
   return (
     <>
+      <AuthModal show={showAuth} onHide={() => setShowAuth(false)} />
+
       <div
         className={`sidebar-backdrop ${show ? "sidebar-backdrop--visible" : ""}`}
         onClick={onHide}
@@ -87,10 +96,10 @@ const MobileSidebar = ({ show, onHide }) => {
             </>
           ) : (
             <>
-              <button className="sidebar-nav-link sidebar-nav-btn" onClick={() => handleNav("/login")}>
+              <button className="sidebar-nav-link sidebar-nav-btn" onClick={handleOpenAuth}>
                 Login
               </button>
-              <button className="sidebar-nav-link sidebar-nav-btn" onClick={() => handleNav("/signup")}>
+              <button className="sidebar-nav-link sidebar-nav-btn" onClick={handleOpenAuth}>
                 Sign Up
               </button>
             </>

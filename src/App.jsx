@@ -1,7 +1,5 @@
 
-import LoginPage from './pages/auth/LoginPage';
-import SignUpPage from './pages/auth/SignUpPage';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
@@ -11,7 +9,6 @@ import OrdersPage from './pages/OrdersPage';
 import ThankYouPage from './pages/ThankYouPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ProfilePage from './pages/ProfilePage';
-import { Navigate } from 'react-router-dom';
 import ProtectedRoute from './pages/auth/ProtectedRoute';
 import SearchResultsPage from './pages/SearchPage';
 
@@ -20,9 +17,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/signup' element={<SignUpPage />} />
-        <Route path='/login' element={<LoginPage />} />
-
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="category/:categoryName" element={<CategoryPage />} />
@@ -35,6 +29,9 @@ function App() {
 
         <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path="/thank-you" element={<ThankYouPage />} />
+
+        <Route path="/login" element={<Navigate to="/" replace />} />
+        <Route path="/signup" element={<Navigate to="/" replace />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

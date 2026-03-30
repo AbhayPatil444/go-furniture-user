@@ -1,15 +1,15 @@
 import { Container, Form, Button, Badge } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import CartModal from "../home/CartModal";
 import MobileSidebar from "./MobileSidebar";
+import AuthModal from "../../pages/auth/authModal";
 
 const Header = () => {
     const navigate = useNavigate();
     const { isLoggedIn } = useSelector((state) => state.auth);
-    
     const cartCount = useSelector((state) => 
       state.cart.items.reduce((sum, item)=> sum + item.cartQuantity, 0)
     );
@@ -17,6 +17,7 @@ const Header = () => {
     const [query, setQuery] = useState("");
     const [showCart, setShowCart] = useState(false);
     const [showSidebar, setShowSidebar] = useState(false); 
+    const [showAuth, setShowAuth] = useState(false);
 
     const performSearch = () => {
         if (!query.trim()) return;
@@ -29,12 +30,12 @@ const Header = () => {
     <>
     <CartModal show={showCart} onHide={() => setShowCart(false)} />
       <MobileSidebar show={showSidebar} onHide={() => setShowSidebar(false)} />
+      <AuthModal show={showAuth} onHide={() => setShowAuth(false)} />
 
       <header className="site-header py-3 shadow-sm bg-white">
         <Container fluid className="px-3 px-md-4">
 
          <div className="d-flex d-md-none align-items-center justify-content-between">
-
             <button
               className="hamburger-btn"
               onClick={() => setShowSidebar(true)}
@@ -108,9 +109,12 @@ const Header = () => {
                   My Account
                 </Button>
               ) : (
-                <Link to="/login" className="text-dark fw-semibold text-decoration-none">
+                <button
+                  className="auth-trigger-btn"
+                  onClick={() => setShowAuth(true)}
+                >
                   Login / Register
-                </Link>
+                </button>
               )}
 
               <button
