@@ -24,7 +24,7 @@ const SearchResultsPage = () => {
                 return;
             }
 
-            const all = Object.values(data);
+            const all = Object.entries(data).map(([id, p]) => ({ id, ...p }));
 
             const filtered = all.filter((p) =>
                 p.name.toLowerCase().includes(query) ||
